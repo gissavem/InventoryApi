@@ -11,12 +11,12 @@ services:
     networks: 
       - ingredient-api
     volumes: 
-      - "./database:/app/database"
+      - "./Database:/app/database"
 
   frontend:
     container_name: frontend
     build: 
-      context: ./frontend/
+      context: ./Frontend/
     image: frontend:latest
     ports: 
       - "4200:80"
