@@ -1,28 +1,28 @@
 version: "3.8"
 
-services:
+services: 
   ingredient-api:
     container_name: ingredient-api
     build: 
       context: ./ingredient-api/
     image: ingredient-api:latest
-    ports:
+    ports: 
       - "8080:80"
-    networks:
+    networks: 
       - ingredient-api
     volumes: 
       - "./database:/app/database"
 
- frontend:
-   container_name: frontend
-   build: 
-     context: ./frontend/
-   image: frontend:latest
-   ports: 
-     - "4200:80"
-   networks:
-     - ingredient-api
+  frontend:
+    container_name: frontend
+    build: 
+      context: ./frontend/
+    image: frontend:latest
+    ports: 
+      - "4200:80"
+    networks: 
+      - ingredient-api
 
-networks:
+networks: 
   ingredient-api:
     external: false

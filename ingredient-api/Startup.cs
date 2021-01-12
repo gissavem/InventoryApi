@@ -11,6 +11,8 @@ namespace ingredient_api
 {
     public class Startup
     {
+        private const string AllowedOrigins = "AllowedOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -26,6 +28,16 @@ namespace ingredient_api
             services.AddDbContext<IngredientDbContext>(options =>
             {
                 options.UseSqlite("Data Source=database/ingredient.db");
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: AllowedOrigins, 
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
             });
             services.AddSwaggerGen(c =>
             {
@@ -44,9 +56,8 @@ namespace ingredient_api
             }
 
             app.UseRouting();
-
             app.UseAuthorization();
-
+            app.UseCors(AllowedOrigins);
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
