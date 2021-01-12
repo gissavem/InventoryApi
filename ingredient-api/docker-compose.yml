@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  api:
+    container_name: api
+    build: 
+      context: ./api
+    image: api:latest
+    ports:
+      - "8080:80"
+    environment:
+      Database__BaseUri: "http://database:80"
+    networks:
+      - ingredient-api
+
+  database:
+    container_name: database
+    image: postgres:latest  
+    restart: always
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "ingredient-db"
+    volumes: 
+      - "./database:/ingredient-db"
+    networks:
+      - ingredient-api
+
+#  frontend:
+#    container_name: frontend
+#    build: 
+#      context: ./TwitterClone.Angular
+#    image: frontend:latest
+#    ports: 
+#      - "4200:80"
+#    networks:
+#      - ingredient-api
+
+networks:
+  ingredient-api:
+    external: false
