@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ingredient_api
 {
@@ -27,6 +28,10 @@ namespace ingredient_api
         {
 
             services.AddControllers();
+            services.AddDbContext<IngredientDbContext>(options =>
+            {
+                options.UseSqlite("Data Source=database/ingredient.db");
+            });
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ingredient_api", Version = "v1" });
