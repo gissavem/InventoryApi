@@ -4,7 +4,7 @@ services:
   ingredient-api:
     container_name: ingredient-api
     build: 
-      context: ./ingredient-api/
+      context: ./IngredientApi/
     image: ingredient-api:latest
     ports: 
       - "8080:80"
