@@ -13,6 +13,16 @@ services:
     volumes: 
       - "./Database:/app/database"
 
+  pizza-api:
+    container_name: pizza-api
+    build: 
+      context: ./PizzaApi/
+    image: pizza-api:latest
+    ports: 
+      - "13337:80"
+    networks: 
+      - ingredient-api
+      
   frontend:
     container_name: frontend
     build: 

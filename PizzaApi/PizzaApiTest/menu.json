@@ -1,0 +1,45 @@
+{
+  "Pizzas": [
+    {
+      "Id": 1,
+      "Name": "Margerita",
+      "Ingredients": [ "Cheese", "Tomato Sauce" ],
+      "Price": 85
+    },
+    {
+      "Id": 2,
+      "Name": "Hawaii",
+      "Ingredients": [ "Cheese", "Tomato Sauce", "Ham", "Pineapple" ],
+      "Price": 95
+    },
+    {
+      "Id": 3,
+      "Name": "Kebab",
+      "Ingredients": [ "Cheese", "Tomato Sauce", "Kebab", "Mushrooms", "Onion", "Peperoncino", "Lettuce", "Tomato", "Kebab Sauce" ],
+      "Price": 115
+    },
+    {
+      "Id": 4,
+      "Name": "Quatro Stagioni",
+      "Ingredients": [ "Cheese", "Tomato Sauce", "Ham", "Shrimp", "Clam", "Mushrooms", "Artichoke" ],
+      "Price": 115
+    }
+  ],
+  "Drinks": [
+    {
+      "Id": 1,
+      "Name": "Coke",
+      "Price": 20
+    },
+    {
+      "Id": 2,
+      "Name": "Fanta",
+      "Price": 20
+    },
+    {
+      "Id": 3,
+      "Name": "Sprite",
+      "Price": 25
+    }
+  ]
+}
