@@ -1,0 +1,20 @@
+{
+    "inventory": 
+    {
+        "cheese": 1,
+        "tomatosauce": 2,
+        "ham": 3,
+        "pineapple": 4,
+        "kebab": 5,
+        "mushrooms": 6,
+        "onion": 7,
+        "peperoncino": 8,
+        "lettuce":9,
+        "tomato": 10,
+        "kebabsauce": 11,
+        "shrimp": 12,
+        "clam": 13, 
+        "artichoke": 14,
+        "cilantro": 15
+    }
+}

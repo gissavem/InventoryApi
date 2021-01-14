@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IngredientService } from '../ingredient.service';
 import { Inventory } from '../inventory';
 
 
@@ -10,10 +11,11 @@ import { Inventory } from '../inventory';
 })
 export class IngredientsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ingredientService: IngredientService) { }
   inventory$: Observable<Inventory>;
 
   ngOnInit(): void {
+    this.inventory$ = this.ingredientService.getCurrentInventory();
   }
 
 }
