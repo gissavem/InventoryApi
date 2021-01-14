@@ -1,18 +1,18 @@
 
-<div class="d-flex flex-wrap">
-    <app-card [amount]="ingredients" [name]="'cheese'"></app-card>
-    <app-card [amount]="ingredients" [name]="'tomatosauce'"></app-card>
-    <app-card [amount]="ingredients" [name]="'ham'"></app-card>
-    <app-card [amount]="ingredients" [name]="'pineapple'"></app-card>
-    <app-card [amount]="ingredients" [name]="'kebab'"></app-card>
-    <app-card [amount]="ingredients" [name]="'mushrooms'"></app-card>
-    <app-card [amount]="ingredients" [name]="'onion'"></app-card>
-    <app-card [amount]="ingredients" [name]="'peperoncino'"></app-card>
-    <app-card [amount]="ingredients" [name]="'lettuce'"></app-card>
-    <app-card [amount]="ingredients" [name]="'tomato'"></app-card>
-    <app-card [amount]="ingredients" [name]="'kebabsauce'"></app-card>
-    <app-card [amount]="ingredients" [name]="'shrimp'"></app-card>
-    <app-card [amount]="ingredients" [name]="'clam'"></app-card>
-    <app-card [amount]="ingredients" [name]="'artichoke'"></app-card>
-    <app-card [amount]="ingredients" [name]="'cilantro'"></app-card>
+<div class="d-flex flex-wrap" *ngIf="(inventory$ | async) as inventory">
+    <app-card [amount]="inventory.cheese" [name]="'cheese'"></app-card>
+    <app-card [amount]="inventory.tomatosauce" [name]="'tomatosauce'"></app-card>
+    <app-card [amount]="inventory.ham" [name]="'ham'"></app-card>
+    <app-card [amount]="inventory.pineapple" [name]="'pineapple'"></app-card>
+    <app-card [amount]="inventory.kebab" [name]="'kebab'"></app-card>
+    <app-card [amount]="inventory.mushrooms" [name]="'mushrooms'"></app-card>
+    <app-card [amount]="inventory.onion" [name]="'onion'"></app-card>
+    <app-card [amount]="inventory.peperoncino" [name]="'peperoncino'"></app-card>
+    <app-card [amount]="inventory.lettuce" [name]="'lettuce'"></app-card>
+    <app-card [amount]="inventory.tomato" [name]="'tomato'"></app-card>
+    <app-card [amount]="inventory.kebabsauce" [name]="'kebabsauce'"></app-card>
+    <app-card [amount]="inventory.shrimp" [name]="'shrimp'"></app-card>
+    <app-card [amount]="inventory.clam" [name]="'clam'"></app-card>
+    <app-card [amount]="inventory.artichoke" [name]="'artichoke'"></app-card>
+    <app-card [amount]="inventory.cilantro" [name]="'cilantro'"></app-card>
 </div>

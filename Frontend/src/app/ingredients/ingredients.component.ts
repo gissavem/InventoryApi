@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Inventory } from '../inventory';
+
 
 @Component({
   selector: 'app-ingredients',
@@ -9,7 +11,7 @@ import { Observable } from 'rxjs';
 export class IngredientsComponent implements OnInit {
 
   constructor() { }
-  ingredients: Observable<any>;
+  inventory$: Observable<Inventory>;
 
   ngOnInit(): void {
   }
