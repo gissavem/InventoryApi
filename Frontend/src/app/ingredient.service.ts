@@ -22,14 +22,16 @@ export class IngredientService {
 
   increaseIngredientInventory(name: string, amount: number) {
     const body = {
-      [name]: amount
+      name: name,
+      amount: amount
     };
     return this.http.post(this.apiUrl + this.endpoint, body, {observe: 'response'});
   }
 
   massDelivery() {
     const body = {
-      ['all']: 10
+      name: 'all',
+      amount: 10
     };
     return this.http.post(this.apiUrl + this.endpoint, body, {observe: 'response'});
   }

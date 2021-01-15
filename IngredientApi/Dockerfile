@@ -2,14 +2,14 @@ FROM mcr.microsoft.com/dotnet/sdk:latest AS build
 WORKDIR /app
 COPY *.sln .
 COPY IngredientApi/*.csproj ./IngredientApi/
-COPY IngredientApi.UnitTest/*.csproj ./IngredientApi.UnitTest/
+COPY IngredientApi.Test/*.csproj ./IngredientApi.Test/
 RUN dotnet restore
 
 COPY . .
 RUN dotnet build
 
 FROM build AS test
-WORKDIR /app/IngredientApi.UnitTest
+WORKDIR /app/IngredientApi.Test
 RUN dotnet test --logger:trx
 
 FROM build AS publish
