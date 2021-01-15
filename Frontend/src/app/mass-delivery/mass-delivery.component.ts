@@ -15,13 +15,12 @@ export class MassDeliveryComponent implements OnInit {
   }
 
   massDelivery(){
-    console.log("mass delivery")
     this.ingredientService.massDelivery()
       .subscribe(
       (response) => {
-        this.successfulPost.emit()
+        this.successfulPost.emit();
         return true;
-      }, 
+      },
       (httpError) => {
         return false;
       });

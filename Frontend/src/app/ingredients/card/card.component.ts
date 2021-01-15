@@ -22,14 +22,15 @@ export class CardComponent implements OnInit {
     f.resetForm();
   }
   increaseIngredientInventory(amount: number){
-    if(amount < 1)
+    if (amount < 1){
       return;
+    }
     this.ingredientService.increaseIngredientInventory(this.name, amount)
       .subscribe(
       (response) => {
-        this.successfulPost.emit()
+        this.successfulPost.emit();
         return true;
-      }, 
+      },
       (httpError) => {
         return false;
       });
