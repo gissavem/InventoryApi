@@ -1,4 +1,4 @@
 <div class="container-fluid d-flex flex-column">
-  <app-ingredients class="align-self-center w-80"></app-ingredients >
-  <app-mass-delivery class="align-self-center"></app-mass-delivery>
+  <app-ingredients #ingredients class="align-self-center w-80"></app-ingredients >
+  <app-mass-delivery (successfulPost)="ingredients.getInventory()" class="align-self-center"></app-mass-delivery>
 </div>

@@ -15,6 +15,9 @@ export class IngredientsComponent implements OnInit {
   inventory$: Observable<Inventory>;
 
   ngOnInit(): void {
+    this.getInventory();
+  }
+  getInventory() {
     this.inventory$ = this.ingredientService.getCurrentInventory();
   }
 

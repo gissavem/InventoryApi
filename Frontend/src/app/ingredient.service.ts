@@ -14,8 +14,23 @@ export class IngredientService {
     this.apiUrl = environment.apiUrl;
    }
    apiUrl: string;
+   endpoint: string = "/inventory";
 
   getCurrentInventory(): Observable<Inventory>{
-    return this.http.get<Inventory>(this.apiUrl +"/inventory");
+    return this.http.get<Inventory>(this.apiUrl + this.endpoint);
+  }
+
+  increaseIngredientInventory(name: string, amount: number) {
+    let body = {
+      [name]: amount
+    }
+    return this.http.post(this.apiUrl + this.endpoint, body, {observe: 'response'});
+  }
+
+  massDelivery() {
+    let body = {
+      ['all']: 10
+    }
+    return this.http.post(this.apiUrl + this.endpoint, body, {observe: 'response'});
   }
 }

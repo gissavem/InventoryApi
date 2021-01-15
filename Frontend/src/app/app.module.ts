@@ -8,6 +8,7 @@ import { IngredientsComponent } from './ingredients/ingredients.component';
 import { CardComponent } from './ingredients/card/card.component';
 import { IngredientService } from './ingredient.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [IngredientService],
   bootstrap: [AppComponent]
