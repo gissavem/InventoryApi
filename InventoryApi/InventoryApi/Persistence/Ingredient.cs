@@ -1,4 +1,4 @@
-﻿namespace IngredientApi.Persistence
+﻿namespace InventoryApi.Persistence
 {
     public class Ingredient
     {

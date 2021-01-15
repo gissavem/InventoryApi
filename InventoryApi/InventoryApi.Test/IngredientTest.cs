@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IngredientApi.Persistence;
+﻿using InventoryApi.Persistence;
 using NUnit.Framework;
 
-namespace IngredientApi.Test
+namespace InventoryApi.Test
 {
-    class IngredientTest
+    public class IngredientTest
     {
         [Test]
         public void Ingredient_InStock_UnitTest()

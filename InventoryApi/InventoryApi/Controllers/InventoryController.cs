@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Diagnostics;
-using IngredientApi.Persistence;
-using IngredientApi.Services;
+using InventoryApi.Services;
+using Microsoft.AspNetCore.Mvc;
 
-namespace IngredientApi.Controllers
+namespace InventoryApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

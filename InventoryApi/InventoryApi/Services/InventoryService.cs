@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using IngredientApi.DTOs;
-using IngredientApi.Persistence;
+using InventoryApi.DTOs;
+using InventoryApi.Persistence;
+using Microsoft.EntityFrameworkCore;
 
-namespace IngredientApi.Services
+namespace InventoryApi.Services
 {
     public class InventoryService : IInventoryService
     {
@@ -17,7 +17,14 @@ namespace IngredientApi.Services
 
         public InventoryResponse GetInventory()
         {
-            throw new System.NotImplementedException();
+            var response = new InventoryResponse();
+
+            context.Ingredients
+                .ForEachAsync(i => response.Ingredients.Add(i.Name,i.Amount))
+                .GetAwaiter()
+                .GetResult();
+
+            return response;
         }
 
         public bool CheckIfIngredientsAreInStock(IEnumerable<Ingredient> ingredients)

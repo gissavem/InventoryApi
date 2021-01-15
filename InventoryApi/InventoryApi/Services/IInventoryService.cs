@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using IngredientApi.DTOs;
-using IngredientApi.Persistence;
+using InventoryApi.DTOs;
+using InventoryApi.Persistence;
 
-namespace IngredientApi.Services
+namespace InventoryApi.Services
 {
     public interface IInventoryService
     {

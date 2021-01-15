@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
-using IngredientApi.DTOs;
-using IngredientApi.Persistence;
-using IngredientApi.Services;
+using InventoryApi.DTOs;
+using InventoryApi.Persistence;
+using InventoryApi.Services;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
-namespace IngredientApi.Test
+namespace InventoryApi.Test
 {
     [TestFixture]
     public class InventoryServiceTests
@@ -16,7 +16,7 @@ namespace IngredientApi.Test
         private SqliteConnection connection;
 
         [SetUp]
-        public void Init()
+        public void Initialize()
         {
             connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
@@ -31,6 +31,7 @@ namespace IngredientApi.Test
             connection.Close();
         }
 
+        #region AddIngredientTests
         [Test]
         public void AddIngredientToInventory_ShouldNotThrowException()
         {
@@ -107,5 +108,33 @@ namespace IngredientApi.Test
                 Assert.AreEqual(expectedResultingAmount, context.Ingredients.First(i => i.Name == name).Amount);
             }
         }
+
+        #endregion
+
+        #region GetInventoryTests
+        [Test]
+        public void GetInventory_ShouldReturnDictionaryWithAllIngredients()
+        {
+            //Arrange
+            int expectedNumberOfIngredients;
+            InventoryResponse response;
+            using (var context = new InventoryDbContext(options))
+            {
+                context.Database.EnsureCreated();
+                expectedNumberOfIngredients = context.Ingredients.Count();
+            }
+
+            //Act
+            using (var context = new InventoryDbContext(options))
+            {
+                var service = new InventoryService(context);
+                response = service.GetInventory();
+            }
+
+            //Assert
+            Assert.AreEqual(expectedNumberOfIngredients, response.Ingredients.Count);
+        }
+
+        #endregion
     }
 }

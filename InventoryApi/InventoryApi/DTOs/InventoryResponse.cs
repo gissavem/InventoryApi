@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace IngredientApi.DTOs
+namespace InventoryApi.DTOs
 {
     public class InventoryResponse
     {
-        public Dictionary<string,int> Ingredients { get; set; }
+        public Dictionary<string,int> Ingredients { get; set; } = new Dictionary<string, int>();
     }
 }

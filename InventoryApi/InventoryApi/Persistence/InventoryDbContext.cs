@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace IngredientApi.Persistence
+namespace InventoryApi.Persistence
 {
     public class InventoryDbContext : DbContext
     {

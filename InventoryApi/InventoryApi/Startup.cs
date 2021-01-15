@@ -1,16 +1,16 @@
 using System;
 using System.Diagnostics;
+using InventoryApi.Persistence;
+using InventoryApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using IngredientApi.Persistence;
-using IngredientApi.Services;
-using Microsoft.EntityFrameworkCore;
 
-namespace IngredientApi
+namespace InventoryApi
 {
     public class Startup
     {
