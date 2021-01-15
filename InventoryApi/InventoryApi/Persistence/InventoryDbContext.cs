@@ -7,10 +7,10 @@ using Newtonsoft.Json;
 
 namespace IngredientApi.Persistence
 {
-    public class IngredientDbContext : DbContext
+    public class InventoryDbContext : DbContext
     {
         private const string ValidIngredientsFileName = "valid-ingredients.json";
-        public IngredientDbContext(DbContextOptions<IngredientDbContext> options) : base(options)
+        public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

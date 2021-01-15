@@ -1,15 +1,15 @@
 version: "3.8"
 
 services: 
-  ingredient-api:
-    container_name: ingredient-api
+  inventory-api:
+    container_name: inventory-api
     build: 
-      context: ./IngredientApi/
-    image: ingredient-api:latest
+      context: ./InventoryApi/
+    image: inventory-api:latest
     ports: 
       - "8080:80"
     networks: 
-      - ingredient-api
+      - inventory-api
     volumes: 
       - "./Database:/app/database"
 
@@ -21,7 +21,7 @@ services:
     ports: 
       - "13337:80"
     networks: 
-      - ingredient-api
+      - inventory-api
       
   frontend:
     container_name: frontend
@@ -31,8 +31,8 @@ services:
     ports: 
       - "4200:80"
     networks: 
-      - ingredient-api
+      - inventory-api
 
 networks: 
-  ingredient-api:
+  inventory-api:
     external: false

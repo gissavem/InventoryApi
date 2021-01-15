@@ -8,12 +8,11 @@ namespace IngredientApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class IngredientsController : ControllerBase
+    public class InventoryController : ControllerBase
     {
         private readonly IInventoryService inventoryService;
 
-
-        public IngredientsController(IInventoryService inventoryService)
+        public InventoryController(IInventoryService inventoryService)
         {
             this.inventoryService = inventoryService;
         }

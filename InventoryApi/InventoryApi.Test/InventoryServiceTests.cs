@@ -12,7 +12,7 @@ namespace IngredientApi.Test
     [TestFixture]
     public class InventoryServiceTests
     {
-        private DbContextOptions<IngredientDbContext> options;
+        private DbContextOptions<InventoryDbContext> options;
         private SqliteConnection connection;
 
         [SetUp]
@@ -20,7 +20,7 @@ namespace IngredientApi.Test
         {
             connection = new SqliteConnection("DataSource=:memory:");
             connection.Open();
-            options = new DbContextOptionsBuilder<IngredientDbContext>()
+            options = new DbContextOptionsBuilder<InventoryDbContext>()
                 .UseSqlite(connection)
                 .Options;
         }
@@ -37,12 +37,12 @@ namespace IngredientApi.Test
             //Arrange
             const string name = "cheese";
             const int amount = 3;
-            using (var context = new IngredientDbContext(options))
+            using (var context = new InventoryDbContext(options))
             {
                 context.Database.EnsureCreated();
             }
             //Act & Assert
-            using (var context = new IngredientDbContext(options))
+            using (var context = new InventoryDbContext(options))
             {
                 var service = new InventoryService(context);
                 service.AddIngredientToInventory(new IngredientRequest
@@ -58,12 +58,12 @@ namespace IngredientApi.Test
             //Arrange
             const string name = "carrot";
             const int amount = 10;
-            using (var context = new IngredientDbContext(options))
+            using (var context = new InventoryDbContext(options))
             {
                 context.Database.EnsureCreated();
             }
             //Act
-            using (var context = new IngredientDbContext(options))
+            using (var context = new InventoryDbContext(options))
             {
                 var service = new InventoryService(context);
                 Assert.Throws<KeyNotFoundException>(() =>
@@ -85,14 +85,14 @@ namespace IngredientApi.Test
             const int amountToAdd = 3;
             const int expectedResultingAmount = 13;
 
-            using (var context = new IngredientDbContext(options))
+            using (var context = new InventoryDbContext(options))
             {
                 context.Database.EnsureCreated();
                 context.Ingredients.First(i => i.Name == name).Amount = initialAmount;
                 context.SaveChanges();
             }
             //Act
-            using (var context = new IngredientDbContext(options))
+            using (var context = new InventoryDbContext(options))
             {
                 var service = new InventoryService(context);
                 service.AddIngredientToInventory(new IngredientRequest
@@ -102,7 +102,7 @@ namespace IngredientApi.Test
                 });
             }
             //Assert
-            using (var context = new IngredientDbContext(options))
+            using (var context = new InventoryDbContext(options))
             {
                 Assert.AreEqual(expectedResultingAmount, context.Ingredients.First(i => i.Name == name).Amount);
             }

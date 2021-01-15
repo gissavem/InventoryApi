@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngredientApi", "IngredientApi\IngredientApi.csproj", "{D5649E8C-2E89-4A32-B090-72342C28251A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryApi", "InventoryApi\InventoryApi.csproj", "{D5649E8C-2E89-4A32-B090-72342C28251A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IngredientApi.Test", "IngredientApi.Test\IngredientApi.Test.csproj", "{484D1520-A066-4B2C-91EB-1C0DE65DB8EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryApi.Test", "InventoryApi.Test\InventoryApi.Test.csproj", "{484D1520-A066-4B2C-91EB-1C0DE65DB8EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

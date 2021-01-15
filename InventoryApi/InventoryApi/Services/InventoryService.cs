@@ -8,9 +8,9 @@ namespace IngredientApi.Services
 {
     public class InventoryService : IInventoryService
     {
-        private readonly IngredientDbContext context;
+        private readonly InventoryDbContext context;
 
-        public InventoryService(IngredientDbContext context)
+        public InventoryService(InventoryDbContext context)
         {
             this.context = context;
         }

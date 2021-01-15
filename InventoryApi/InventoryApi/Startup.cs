@@ -28,7 +28,7 @@ namespace IngredientApi
         {
             services.AddScoped<IInventoryService, InventoryService>();
             services.AddControllers();
-            services.AddDbContext<IngredientDbContext>(options =>
+            services.AddDbContext<InventoryDbContext>(options =>
             {
                 options.UseSqlite("Data Source=database/ingredient.db");
             });
@@ -49,7 +49,7 @@ namespace IngredientApi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IngredientDbContext dbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, InventoryDbContext dbContext)
         {
             EnsureDatabaseIsCreated(dbContext);
             if (env.IsDevelopment())
@@ -68,7 +68,7 @@ namespace IngredientApi
             });
         }
 
-        private static void EnsureDatabaseIsCreated(IngredientDbContext context)
+        private static void EnsureDatabaseIsCreated(InventoryDbContext context)
         {
             try
             {
