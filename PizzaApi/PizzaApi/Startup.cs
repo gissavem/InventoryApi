@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using PizzaApi.Integration;
+using PizzaApi.Integration.InventoryApi;
 
 namespace PizzaApi
 {
@@ -26,6 +28,8 @@ namespace PizzaApi
             services.AddScoped<PizzaBL>();
             services.AddScoped<MenuBL>();
             services.AddScoped<OrderBL>();
+            services.AddScoped<InventoryApiService>();
+
 
 
             services.AddSingleton<CartSingleton>();

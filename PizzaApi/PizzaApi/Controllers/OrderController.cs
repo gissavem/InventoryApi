@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Http;
+using PizzaApi.Integration;
+using PizzaApi.Integration.InventoryApi;
 
 namespace PizzaApi
 {
@@ -10,11 +14,13 @@ namespace PizzaApi
     {
         private readonly CartSingleton _cart;
         private readonly OrderBL _orderBL;
+        private readonly InventoryApiService _inventoryApi;
 
-        public OrderController(CartSingleton cart, OrderBL orderBL)
+        public OrderController(CartSingleton cart, OrderBL orderBL, InventoryApiService inventoryApi)
         {
             _cart = cart;
             _orderBL = orderBL;
+            _inventoryApi = inventoryApi;
         }
         [HttpGet]
         public ActionResult GetOrders()
@@ -31,6 +37,15 @@ namespace PizzaApi
             if (_cart.Order.IsEmpty)
             {
                 return BadRequest("No items in cart");
+            }
+
+            try
+            {
+                _inventoryApi.ProcessOrder(_cart.Order);
+            }
+            catch (BadHttpRequestException e)
+            {
+                return BadRequest(e.Message);
             }
 
             var orderId = _orderBL.SaveOrderInCartToOrderStore();

@@ -22,6 +22,8 @@ services:
       - "13337:80"
     networks: 
       - inventory-api
+    environment:
+      Inventory__BaseUri: "http://inventory-api:80"
       
   frontend:
     container_name: frontend

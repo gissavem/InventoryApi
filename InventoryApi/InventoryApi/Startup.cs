@@ -37,7 +37,7 @@ namespace InventoryApi
                 options.AddPolicy(name: AllowedOrigins,
                     builder =>
                     {
-                        builder.WithOrigins("http://localhost:4200")
+                        builder.WithOrigins("http://localhost:4200", "http://pizza-api:80")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
