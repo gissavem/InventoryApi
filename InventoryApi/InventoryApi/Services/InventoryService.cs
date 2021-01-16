@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using InventoryApi.DTOs;
 using InventoryApi.Persistence;
@@ -27,13 +28,31 @@ namespace InventoryApi.Services
             return response;
         }
 
-        public bool CheckIfIngredientsAreInStock(IEnumerable<Ingredient> ingredients)
+        public List<string> GetNamesOfMissingIngredients(IEnumerable<Ingredient> orderIngredients)
         {
-            throw new System.NotImplementedException();
+            return (from orderIngredient in orderIngredients 
+                select context.Ingredients.SingleOrDefault(i => i.Name == orderIngredient.Name && i.Amount < orderIngredient.Amount)
+                into ingredient 
+                where ingredient is not null 
+                select ingredient.Name).ToList();
+        }
+
+        public void RemoveIngredientsFromInventory(IEnumerable<Ingredient> orderIngredients)
+        {
+            foreach (var orderIngredient in orderIngredients)
+            {
+                context.Ingredients.First(i => i.Name == orderIngredient.Name).Amount -= orderIngredient.Amount;
+            }
+            context.SaveChanges();
         }
 
         public void AddIngredientToInventory(IngredientRequest request)
         {
+            if (request.Name == "all")
+            {
+                AddAmountToAllIngredients(request.Amount);
+                return;
+            }
             var ingredient = context.Ingredients.SingleOrDefault(i => i.Name == request.Name);
             if (ingredient is null)
             {
@@ -43,9 +62,10 @@ namespace InventoryApi.Services
             context.SaveChanges();
         }
 
-        public void IncreaseAmountOfAllIngredients(IngredientRequest ingredient)
+        private void AddAmountToAllIngredients(int amountToIncrease)
         {
-            throw new System.NotImplementedException();
+            context.Ingredients.ForEachAsync(i => i.Amount += amountToIncrease).GetAwaiter().GetResult();
+            context.SaveChanges();
         }
     }
 }

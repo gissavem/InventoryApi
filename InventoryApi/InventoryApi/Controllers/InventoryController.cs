@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using InventoryApi.DTOs;
 using InventoryApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,8 +29,47 @@ namespace InventoryApi.Controllers
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
-                return StatusCode(500);
+                return StatusCode(500, e.Message);
+            }
+        }
+        [HttpPatch]
+        public ActionResult AddIngredientsToInventory([FromBody] IngredientRequest request)
+        {
+            request.Name = request.Name.ToLowerInvariant();
+            try
+            {
+                inventoryService.AddIngredientToInventory(request);
+                return Ok();
+            }
+            catch (KeyNotFoundException e)
+            {
+                return BadRequest(e.Message);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
+        [HttpPost]
+        public ActionResult ProcessOrder([FromBody]ProcessOrderRequest request)
+        {
+            if (!request.Ingredients.Any())
+            {
+                return BadRequest("No ingredients in request");
+            }
+            try
+            {
+                var missingIngredients = inventoryService.GetNamesOfMissingIngredients(request.Ingredients);
+                if (missingIngredients.Any())
+                {
+                    return NotFound("Not enough of ingredients in stock: " + missingIngredients.ToArray());
+                }
+                inventoryService.RemoveIngredientsFromInventory(request.Ingredients);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
             }
         }
     }

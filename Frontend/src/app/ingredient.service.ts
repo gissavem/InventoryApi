@@ -25,7 +25,7 @@ export class IngredientService {
       name: name,
       amount: amount
     };
-    return this.http.post(this.apiUrl + this.endpoint, body, {observe: 'response'});
+    return this.http.patch(this.apiUrl + this.endpoint, body, {observe: 'response'});
   }
 
   massDelivery() {
@@ -33,6 +33,6 @@ export class IngredientService {
       name: 'all',
       amount: 10
     };
-    return this.http.post(this.apiUrl + this.endpoint, body, {observe: 'response'});
+    return this.http.patch(this.apiUrl + this.endpoint, body, {observe: 'response'});
   }
 }
