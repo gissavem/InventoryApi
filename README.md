@@ -1,4 +1,4 @@
-# InventoryApi: a study in integration, Docker, and design patterns by John Andersson
+# InventoryApi - A study in api integration, Docker, and design patterns by John Andersson
 
 ## Design pattern motivation
 
