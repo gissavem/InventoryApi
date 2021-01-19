@@ -1,9 +1,4 @@
-# InventoryApi - A study in api integration, Docker, and design patterns by John Andersson
-
-## Design pattern motivations
-
-
-
+## Design pattern motivations :speech_balloon:	
 ### Visitor :heavy_check_mark:	
 
 Creating relevant responses while iterating over collections is made easy by utilizing a visitor pattern.
@@ -19,3 +14,11 @@ Dependency injection in .NET makes it so easy to get the service my controller d
 
 Furthermore my guess is that scoped instances would be easier to extend for logging and asynchronus use if the application were to evolve, 
 but I won't make any strong claims about this.
+
+## Testing :test_tube:
+Most of the tests I wrote are using a in memory version of SQLite-DB that enables me to control state before tests and then assert that the changes I intend for the operations actually go through. Even though it may be argued that these tests are less reliable than pure unit tests, I would argue that these tests are a good option to ensure that my application is doing what I want. Especially since the application more or less focuses on keeping track of an inventory. :mage:
+
+I decided to add the test projects of both the existing PizzaApi and the new InventoryApi to respective Dockerfiles to enable testing when building the image of the containers.
+This enabled me to make sure that all tests were passing when building all containers for the application with docker-compose.
+
+#### // John Andersson
