@@ -1,16 +1,15 @@
 # InventoryApi - A study in api integration, Docker, and design patterns by John Andersson
 
-## Design pattern motivation
+## Design pattern motivations
 
 
 
-### Iterator
+### Visitor :heavy_check_mark:	
 
-The most obvious design pattern in use in this application is the Iterator pattern
-.
+Creating relevant responses while iterating over collections is made easy by utilizing a visitor pattern.
+Both when I add the total amount of all ingredients and when getting the current inventory.
 
-
-### Singleton
+### Singleton :x:	
 
 I could have chosen to register the **IIventoryService** as a singleton in Startup and call it a day, but I chose to instead use a scoped instance for the injection of the service. In .NET there is built in methods for these different approcaches when configuring dependency injection. A Singleton is always the same instance across all uses in the application. Scoped objects on the other hand are the same within a request, but different across different requests. 
 
