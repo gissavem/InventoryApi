@@ -4,8 +4,10 @@
 
 
 
-### Singleton
+### Iterator
 
+The most obvious design pattern in use in this application is the Iterator pattern
+.
 
 
 ### Singleton
