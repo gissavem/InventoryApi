@@ -6,6 +6,7 @@ COPY InventoryApi.Test/*.csproj ./InventoryApi.Test/
 RUN dotnet restore
 
 COPY . .
+RUN find -type d -name bin -prune -exec rm -rf {} \; && find -type d -name obj -prune -exec rm -rf {} \;
 RUN dotnet build
 
 FROM build AS test

@@ -1,18 +1,19 @@
 
 <div class="d-flex flex-wrap" *ngIf="(inventory$ | async) as inventory">
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.cheese" [name]="'cheese'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.tomatosauce" [name]="'tomatosauce'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.ham" [name]="'ham'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.pineapple" [name]="'pineapple'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.kebab" [name]="'kebab'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.mushrooms" [name]="'mushrooms'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.onion" [name]="'onion'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.peperoncino" [name]="'peperoncino'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.lettuce" [name]="'lettuce'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.tomato" [name]="'tomato'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.kebabsauce" [name]="'kebabsauce'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.shrimp" [name]="'shrimp'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.clam" [name]="'clam'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.artichoke" [name]="'artichoke'"></app-card>
-    <app-card (successfulPost)="getInventory()" [amount]="inventory.cilantro" [name]="'cilantro'"></app-card>
+    <app-card id="cheese" (successfulPost)="getInventory()" [amount]="inventory.cheese" [name]="'cheese'"></app-card>
+    <app-card id="tomatosauce" (successfulPost)="getInventory()" [amount]="inventory.tomatosauce" [name]="'tomatosauce'"></app-card>
+    <app-card id="ham" (successfulPost)="getInventory()" [amount]="inventory.ham" [name]="'ham'"></app-card>
+    <app-card id="pineapple" (successfulPost)="getInventory()" [amount]="inventory.pineapple" [name]="'pineapple'"></app-card>
+    <app-card id="kebab" (successfulPost)="getInventory()" [amount]="inventory.kebab" [name]="'kebab'"></app-card>
+    <app-card id="mushrooms" (successfulPost)="getInventory()" [amount]="inventory.mushrooms" [name]="'mushrooms'"></app-card>
+    <app-card id="onion" (successfulPost)="getInventory()" [amount]="inventory.onion" [name]="'onion'"></app-card>
+    <app-card id="peperoncino" (successfulPost)="getInventory()" [amount]="inventory.peperoncino" [name]="'peperoncino'"></app-card>
+    <app-card id="lettuce" (successfulPost)="getInventory()" [amount]="inventory.lettuce" [name]="'lettuce'"></app-card>
+    <app-card id="tomato"  (successfulPost)="getInventory()" [amount]="inventory.tomato" [name]="'tomato'"></app-card>
+    <app-card id="kebabsauce"  (successfulPost)="getInventory()" [amount]="inventory.kebabsauce" [name]="'kebabsauce'"></app-card>
+    <app-card id="shrimp" (successfulPost)="getInventory()" [amount]="inventory.shrimp" [name]="'shrimp'"></app-card>
+    <app-card id="clam" (successfulPost)="getInventory()" [amount]="inventory.clam" [name]="'clam'"></app-card>
+    <app-card id="artichoke" (successfulPost)="getInventory()" [amount]="inventory.artichoke" [name]="'artichoke'"></app-card>
+    <app-card id="cilantro"  (successfulPost)="getInventory()" [amount]="inventory.cilantro" [name]="'cilantro'"></app-card>
 </div>
+
