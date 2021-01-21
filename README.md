@@ -29,10 +29,23 @@ When it comes to making sure the e2e-tests does not actually change 'production'
 
 Instead it creates a new .db-file in the root directory of the container that has the same mannerism as the 'production' .db-file. The real differance is that it is discarded when the container shuts down. This approach lets me avoid creating endpoints and clean-up methods in the application but still being able to use persistance for the e2e-tests.
 
+There is a clear disadvantage with these e2e-tests. If any of the preceeding tests fail, the following tests most likely will fail also. 
 
-#### ```docker-compose up -d```
+## Running the application :runner:
 
-#### ```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d```
+To run the application **in development mode** where the e2e-tests can be executed run the following commands in the root folder of the project.
+
+>1. #### ```docker-compose up -d```
+>2. #### ```cypress run``` or ```cypress open```
+>3. Done! (note that the container has to be restarted every time you want to run the suite of e2e-tests)
+
+To run the application **in production mode** with 'true' persistance.
+
+>1. #### ```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d```
+>2. Done!
  
+ 
+Have fun!
+
 
 #### // John Andersson :mage:
