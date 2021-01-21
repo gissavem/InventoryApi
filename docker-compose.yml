@@ -10,8 +10,8 @@ services:
       - "8080:80"
     networks: 
       - inventory-api
-    volumes: 
-      - "./Database:/app/database"
+    environment: 
+      ASPNETCORE_ENVIRONMENT: "Development"
 
   pizza-api:
     container_name: pizza-api

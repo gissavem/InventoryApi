@@ -15,6 +15,8 @@ namespace InventoryApi
     public class Startup
     {
         private const string AllowedOrigins = "AllowedOrigins";
+        private const string DbConnectionString = "DbConnectionString";
+
 
         public Startup(IConfiguration configuration)
         {
@@ -26,11 +28,12 @@ namespace InventoryApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var dbConnectionString = Configuration.GetSection(DbConnectionString).Value;
             services.AddScoped<IInventoryService, InventoryService>();
             services.AddControllers();
             services.AddDbContext<InventoryDbContext>(options =>
             {
-                options.UseSqlite("Data Source=database/ingredient.db");
+                options.UseSqlite($"Data Source={dbConnectionString}");
             });
             services.AddCors(options =>
             {
