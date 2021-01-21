@@ -62,7 +62,7 @@ namespace InventoryApi.Controllers
                 var missingIngredients = inventoryService.GetNamesOfMissingIngredients(request.Ingredients);
                 if (missingIngredients.Any())
                 {
-                    return BadRequest("Not enough of ingredients in stock: " + missingIngredients.ToArray());
+                    return BadRequest("Not enough of ingredients in stock: " + string.Join(", ", missingIngredients));
                 }
                 inventoryService.RemoveIngredientsFromInventory(request.Ingredients);
                 return Ok();

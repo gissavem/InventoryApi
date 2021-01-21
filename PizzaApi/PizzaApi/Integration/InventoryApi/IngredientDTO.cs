@@ -1,4 +1,4 @@
-﻿namespace PizzaApi.Integration
+﻿namespace PizzaApi.Integration.InventoryApi
 {
     public class IngredientDTO
     {

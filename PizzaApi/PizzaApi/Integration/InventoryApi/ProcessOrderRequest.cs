@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PizzaApi.Integration
+namespace PizzaApi.Integration.InventoryApi
 {
     public class ProcessOrderRequest
     {

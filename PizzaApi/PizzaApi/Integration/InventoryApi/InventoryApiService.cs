@@ -28,9 +28,10 @@ namespace PizzaApi.Integration.InventoryApi
             request.AddJsonBody(processOrderRequest);
 
             var response = client.Post(request);
-            if (response.StatusCode == HttpStatusCode.BadRequest)
+            
+            if (!response.IsSuccessful)
             {
-                throw new BadHttpRequestException(response.ErrorMessage);
+                throw new BadHttpRequestException(response.Content);
             }
         }
 
@@ -39,7 +40,11 @@ namespace PizzaApi.Integration.InventoryApi
             return (from ingredient in ingredients
                     group ingredient by ingredient.Name
                     into g
-                    select new IngredientDTO { Name = g.Key, Amount = g.Count()})
+                    select new IngredientDTO
+                    {
+                        Name = g.Key.ToLowerInvariant().RemoveSpacesFromString(),
+                        Amount = g.Count()
+                    })
                 .ToList();
         }
 
