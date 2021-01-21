@@ -21,4 +21,16 @@ Most of the tests I wrote are using a in memory version of SQLite-DB that enable
 I decided to add the test projects of both the existing PizzaApi and the new InventoryApi to respective Dockerfiles to enable testing when building the image of the containers.
 This enabled me to make sure that all tests were passing when building all containers for the application with docker-compose.
 
+### End-to-end testing :left_right_arrow:	
+
+When it comes to making sure the e2e-tests does not actually change 'production' data I decided to run e2e-test in a seperate instance. This testing environment is identical to the production environment in all regards except that it does not import the volume that the application reads and writes from for persistance. 
+
+Instead it creates a new .db-file in the root directory of the container that has the same mannerism as the 'production' .db-file. The real differance is that it is discarded when the container shuts down. This approach lets me avoid creating endpoints and clean-up methods in the application but still being able to use persistance for the e2e-tests.
+
+
+#### ```docker-compose up -d```
+
+#### ```docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d```
+ 
+
 #### // John Andersson :mage:
